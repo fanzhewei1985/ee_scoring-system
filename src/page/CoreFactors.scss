@@ -1,0 +1,111 @@
+.CoreFactors{
+  width:100%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+padding:0;
+
+  .title{
+    border: 1px solid black;
+    background-color: goldenrod;
+    width:100%;
+  }
+  .yellow{
+    background-color: lightyellow;
+  }
+  .container{
+    display:flex;
+    justify-content: space-between;
+
+    max-width:100%;
+    padding:0;
+    .left{
+      width:18%;
+      padding:20px 0;
+      border: 1px solid black;
+      display: grid;
+      place-items: center;
+    }
+    .middle{
+      width:70%;
+      padding:20px 0;
+      border: 1px solid black;
+      position:relative;
+      .contentMiddle{
+        position: absolute;
+        left:10px;
+      }
+      .label{
+        margin:0 30px;
+      }
+      .labelInput{
+        margin:0 10px;
+      }
+    }
+    .right{
+      width:12%;
+      padding:20px 0;
+      border: 1px solid black;
+      display: grid;
+      place-items: center;
+    }
+  }
+.middle.padding{
+  padding:0;
+}
+  .languageContainer{
+    border-bottom: 1px solid black;
+    padding: 10px;
+  }
+  .languageSection{
+    display:flex;
+    width:100%;
+    justify-content: space-between;
+    border-bottom: solid black 1px;
+.last{
+  border:none;
+}
+    p,div{
+      padding:10px 0;
+      border-right:solid 1px black;
+      width:100%;
+      margin:0;
+    }
+input{
+  border:none;
+  width:40%;
+  height:40px;
+  box-shadow: rgba(44, 51, 51, 0.63) 1px 2px;
+  border-radius: 3px;
+}
+  }
+}
+
+.work_middle{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+border-bottom: 1px solid black;
+&_text{
+  width:25%;
+
+}
+  &_input{
+    width:75%;
+    padding: 20px 20px;
+  }
+}
+.line{
+  padding:20px 0;
+  width: 100%;
+  border:  1px solid black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.radioLabel{
+  margin: 0 25px;
+  font-weight: normal;
+}
+

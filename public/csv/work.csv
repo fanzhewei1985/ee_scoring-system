@@ -1,0 +1,7 @@
+year,WithSpouse,WithoutSpouse
+None or less than a year,0,0
+1 year,35,40
+2 years,46,53
+3 years,56,64
+4 years,63,72
+5 years or more,70,80

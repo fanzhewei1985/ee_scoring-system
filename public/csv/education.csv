@@ -1,0 +1,9 @@
+LevelOfEducation,WithSpouse,WithoutSpouse
+Less than secondary school,0,0
+Secondary diploma ,28,30
+One-year post-secondary program,84,90
+Two-year post-secondary program,91,98
+Bachelor's degree OR a three or more year program ,112,120
+"Two or more certificates, diplomas, or degrees. One must be for a program of three or more years",119,128
+Master's degree,126,135
+Doctoral level university degree,140,150
