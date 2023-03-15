@@ -4,6 +4,7 @@ import Papa from "papaparse";
 const CoreEducation = ({fun,withSpouse}) => {
     const[index,setIndex]=useState(0)
     const[eduData,setEduData]=useState([])
+    const[eduSkill,setEduSkill]=useState(0)
     useEffect(()=>{
         try{
             const fetchData= async ()=> {
@@ -23,10 +24,12 @@ const keysArr=copyArray.shift()
     // console.log(objArray)
     const optionHandler=(e)=>{
         setIndex(Number(e.target.value))
+        if(e.target.value>=2&&e.target.value<=4){setEduSkill(1)}
+        else if(e.target.value>=5){setEduSkill(2)}
     }
 
     const score=withSpouse?objArray[index]?.WithSpouse:objArray[index]?.WithoutSpouse
-    useEffect(()=>fun('education',Number(score)),[score])
+    useEffect(()=>fun('education',Number(score),eduSkill),[score])
     return (
             <div className='container'>
                 <div className='left'>Education</div>

@@ -22,8 +22,9 @@ const [workData,setWorkData]=useState([])
                 setWorkData(objArray)
             }
             fetchData()}catch(e){console.log(e)}},[])
+    const [workSkill,setWorkSkill]=useState(0)
     const workScore=withSpouse?workData[index]?.WithSpouse:workData[index]?.WithoutSpouse
-    useEffect(()=>fun('work',Number(workScore)),[workScore])
+    useEffect(()=>fun('work',Number(workScore),workSkill),[workScore])
     return (
 
             <div className='container '>
@@ -31,7 +32,10 @@ const [workData,setWorkData]=useState([])
                 <div className='middle padding'>
                     <div className='work_middle'>
                         <div className='work_middle_text'>Canadian work experience</div>
-                        <div className='work_middle_input'><select className="form-select" onChange={(e)=>setIndex(Number(e.target.value))} >
+                        <div className='work_middle_input'><select className="form-select" onChange={(e)=>{setIndex(Number(e.target.value))
+                       if(e.target.value<1){setWorkSkill(0)}
+                       else if(e.target.value>=2){setWorkSkill(2)}
+                        else {setWorkSkill(1)}}} >
                             {workData.map((arr,ind)=> <option value={ind}>{arr.year}</option>)}
                         </select></div>
                     </div>

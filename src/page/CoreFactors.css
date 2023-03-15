@@ -107,4 +107,29 @@
   font-weight: normal;
 }
 
+.spousePart {
+  padding: 0;
+  width: 100%;
+}
+
+.middle_EDU {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.edu_middle {
+  border: solid 1px black;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.right_EDU {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 12%;
+}
+
 /*# sourceMappingURL=CoreFactors.css.map */

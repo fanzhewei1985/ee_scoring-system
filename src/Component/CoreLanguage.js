@@ -3,11 +3,11 @@ import Papa from 'papaparse'
 import CoreLanguageScore from "./CoreLanguageScore";
 
 const CoreLanguage = ({fun,withSpouse}) => {
+
     const[language,setLanguage]=useState({french:false,english:false})
     const[englishCtg,setEnglishCtg]=useState({IELTS:false,CELPIP:false,IELTS2:false,CELPIP2:false})
     const[frenchCtg,setFrenchCtg]=useState({TEF:false,TCF:false,TEF2:false,TCF2:false})
     const [secLanguage,setSecLanguage]=useState({yes:false,no:true})
-    // const [firstInput,setFirstInput]=useState({Reading:0,Listening:0,Speaking:0,Writing:0})
     const[languageData,setLanguageData]=useState([])
     const [clb, setClb]=useState({Reading:0,Listening:0,Speaking:0,Writing:0})
     const [clbRd, setClbRd]=useState({Reading:0,Listening:0,Speaking:0,Writing:0})
@@ -99,12 +99,23 @@ const copyArray=[...languageData]
             }
         })
     }
+    const [skillLan,setSkillLan]=useState(0)
+    const clbArray=Object.values(clb)
+
+    useEffect(()=>{
+        const clbArray1=clbArray.filter(arr=>arr>=7)
+        const clbArray2=clbArray.filter(arr=>arr>=9)
+        clbArray1.length===clbArray.length && setSkillLan(1)
+        clbArray2.length===clbArray.length && setSkillLan(2)
+    },[clbArray])
+
     const [child,setChild]=useState(0)
     const passData=(a)=>setChild(a)
-    useEffect(()=>fun('language',child),[child])
+    useEffect(()=>fun('language',child,skillLan),[child])
     return (
         <div className='container'>
             <div className='left yellow'>Language</div>
+            {/*<LanguageFunc fun={getClbFromChild}/>*/}
             <div className='middle yellow padding'>
                 <div className='languageContainer'>
                 <label className='label' htmlFor='english'><input type='radio' name='english' onChange={(evt)=>setLanguage({english:true,french:false})} checked={language.english}
