@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 
-const SkillEdu = ({skillScore}) => {
+const SkillEdu = ({skillScore,fun}) => {
     console.log(skillScore)
     const [scoreA,setScoreA]=useState(0)
     const[scoreB,setScoreB]=useState(0)
@@ -17,8 +17,8 @@ const SkillEdu = ({skillScore}) => {
     },[skillScore])
 
     useEffect(()=>{
-        if(skillScore.work<1||skillScore.education<1){setScoreB(0)}
-        else if(skillScore.work===1){
+        if(skillScore.work.Canada<1||skillScore.education<1){setScoreB(0)}
+        else if(skillScore.work.Canada===1){
             skillScore.education===1&&setScoreB(13)
             skillScore.education===2&&setScoreB(25)
         }
@@ -27,12 +27,13 @@ const SkillEdu = ({skillScore}) => {
             skillScore.education===2&&setScoreB(50)
         }
     },[skillScore])
+    useEffect(()=>fun('education',Number(scoreA+scoreB)),[scoreA,scoreB])
     return (
         <div className='container '>
             <div className='left'>Education</div>
             <div className='middle_EDU'>
-                <div className='edu_middle'>Education+Language</div>
-                <div className='edu_middle'>Education+Work experience</div>
+                <div className='edu_middle'>Education + Language</div>
+                <div className='edu_middle'>Education + Work experience</div>
             </div>
                 <div className='right_EDU'>
                     <div className='edu_middle'>{scoreA}</div>

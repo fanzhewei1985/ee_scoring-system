@@ -23,8 +23,10 @@ const [workData,setWorkData]=useState([])
             }
             fetchData()}catch(e){console.log(e)}},[])
     const [workSkill,setWorkSkill]=useState(0)
+    const [foreignWork,setForeignWork]=useState(0)
     const workScore=withSpouse?workData[index]?.WithSpouse:workData[index]?.WithoutSpouse
-    useEffect(()=>fun('work',Number(workScore),workSkill),[workScore])
+    useEffect(()=>fun('work',Number(workScore),{Canada:workSkill,foreign:Number(foreignWork)}),[workScore,foreignWork])
+
     return (
 
             <div className='container '>
@@ -41,10 +43,10 @@ const [workData,setWorkData]=useState([])
                     </div>
                     <div className='work_middle'>
                     <div className='work_middle_text'>Foreign work experience</div>
-                        <div className='work_middle_input' ><select className="form-select" >
-                            <option >0 year</option>
-                            <option>1-2 years</option>
-                            <option>over 3 years</option>
+                        <div className='work_middle_input' ><select className="form-select" onChange={(e)=>setForeignWork(e.target.value)} >
+                            <option value={0}>0 year</option>
+                            <option value={1}>1-2 years</option>
+                            <option value={2}>over 3 years</option>
                         </select></div>
                     </div>
                 </div>

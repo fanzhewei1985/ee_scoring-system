@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Papa from 'papaparse'
 import CoreLanguageScore from "./CoreLanguageScore";
 
-const CoreLanguage = ({fun,withSpouse}) => {
+const CoreLanguage = ({fun,withSpouse,funFrench}) => {
 
     const[language,setLanguage]=useState({french:false,english:false})
     const[englishCtg,setEnglishCtg]=useState({IELTS:false,CELPIP:false,IELTS2:false,CELPIP2:false})
@@ -11,7 +11,7 @@ const CoreLanguage = ({fun,withSpouse}) => {
     const[languageData,setLanguageData]=useState([])
     const [clb, setClb]=useState({Reading:0,Listening:0,Speaking:0,Writing:0})
     const [clbRd, setClbRd]=useState({Reading:0,Listening:0,Speaking:0,Writing:0})
-
+const [frenchClb,setFrenchClb]=useState({TEF:[],TCF:[]})
             const fetchData= async (file)=> {
     try{
                 const data= await fetch(file)
@@ -63,6 +63,7 @@ const copyArray=[...languageData]
             const max=array[1]
             if(value>=min&&value<=max){
                 setClb({...clb,[name]:arr.CLB_Level})
+
             }
             }
         )
@@ -72,6 +73,8 @@ const copyArray=[...languageData]
                 const max=array[1]
                 if(value>=min&&value<=max){
                     setClbRd({...clbRd,[name]:arr.CLB_Level})
+
+
                 }
             }
         )
@@ -80,11 +83,15 @@ const copyArray=[...languageData]
               const array=arr[name].split('-')
                 const min=array[0]
                 const max=array[1]
-                console.log(value,min,max)
-                value>=min&&value<=max&&setClb({...clb,[name]:arr.CLB_Level})
+                // console.log(value,min,max)
+                if(value>=min&&value<=max) {
+                    setClb({...clb, [name]: arr.CLB_Level})
+
+                }
             }
             else if(value===arr[name]){
                 setClb({...clb,[name]:arr.CLB_Level})
+
             }
         })
         secLanguage.yes&&frenchCtg.TCF2&&objArray.forEach((arr,i)=>{
@@ -107,11 +114,14 @@ const copyArray=[...languageData]
         const clbArray2=clbArray.filter(arr=>arr>=9)
         clbArray1.length===clbArray.length && setSkillLan(1)
         clbArray2.length===clbArray.length && setSkillLan(2)
+        clbArray1.length<clbArray.length&&setSkillLan(0)
+        console.log(clbArray1,clbArray2)
     },[clbArray])
 
     const [child,setChild]=useState(0)
     const passData=(a)=>setChild(a)
     useEffect(()=>fun('language',child,skillLan),[child])
+    useEffect(()=>funFrench(language.french),[language.french])
     return (
         <div className='container'>
             <div className='left yellow'>Language</div>
